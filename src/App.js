@@ -13,7 +13,7 @@ function App() {
               onClick={(name) => {
                 console.log(name);
               }}
-              items={['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']}
+              items={['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']}
             />
             <div className="sort">
               <div className="sort__label">
