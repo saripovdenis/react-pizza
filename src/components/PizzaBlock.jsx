@@ -80,7 +80,10 @@ PizzaBlock.propTypes = {
 };
 
 PizzaBlock.defaultProps = {
+  name: '---',
+  price: 0,
   types: [],
+  sizes: [],
 };
 
 export default PizzaBlock;
