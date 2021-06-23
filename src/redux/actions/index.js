@@ -1,2 +1,2 @@
 export { setPizzas, fetchPizzas } from './pizzas';
-export { setCategoryBy as setCategory } from './filters';
+export { setCategoryBy as setCategory, setSortBy as setSort } from './filters';
