@@ -7,9 +7,9 @@ import { setCategory, fetchPizzas, setSort } from '../redux/actions';
 const categoryNames = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
 const sortItems = [
-  { name: 'популярности', type: 'popular' },
-  { name: 'цене', type: 'price' },
-  { name: 'алфавиту', type: 'alphabet' },
+  { name: 'популярности', type: 'popular', order: 'desc' },
+  { name: 'цене', type: 'price', order: 'desc' },
+  { name: 'алфавиту', type: 'name', order: 'asc' },
 ];
 
 function Home() {
@@ -26,8 +26,8 @@ function Home() {
   );
 
   const onSelectSort = React.useCallback(
-    (type) => {
-      dispatch(setSort(type));
+    (sortBy) => {
+      dispatch(setSort(sortBy));
     },
     [dispatch],
   );
@@ -47,7 +47,7 @@ function Home() {
             onClickCategory={onSelectCategory}
             items={categoryNames}
           />
-          <SortPopup activeSortType={sortBy} items={sortItems} onClickSort={onSelectSort} />
+          <SortPopup activeSortType={sortBy.type} items={sortItems} onClickSort={onSelectSort} />
         </div>
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">
