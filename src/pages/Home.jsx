@@ -18,25 +18,19 @@ function Home() {
   const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
   const { category, sortBy } = useSelector(({ filters }) => filters);
 
-  const onSelectCategory = React.useCallback(
-    (index) => {
-      dispatch(setCategory(index));
-    },
-    [dispatch],
-  );
+  const onSelectCategory = React.useCallback((index) => {
+    dispatch(setCategory(index));
+  }, []);
 
-  const onSelectSort = React.useCallback(
-    (sortBy) => {
-      dispatch(setSort(sortBy));
-    },
-    [dispatch],
-  );
+  const onSelectSort = React.useCallback((sortBy) => {
+    dispatch(setSort(sortBy));
+  }, []);
 
   React.useEffect(() => {
     if (!items.lenght) {
       dispatch(fetchPizzas(sortBy, category));
     }
-  }, [dispatch, category, sortBy]);
+  }, [category, sortBy]);
 
   return (
     <div>
