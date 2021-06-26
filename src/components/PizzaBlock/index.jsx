@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import Button from '../Button';
 
-function PizzaBlock({ name, imageUrl, price, types, sizes }) {
+function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza }) {
   const typeNames = ['тонкое', 'традиционное'];
   const sizeValues = [26, 30, 40];
 
@@ -18,6 +18,18 @@ function PizzaBlock({ name, imageUrl, price, types, sizes }) {
 
   const onSelectSize = (size) => {
     setActiveSize(size);
+  };
+
+  const onAddPizza = () => {
+    const obj = {
+      id,
+      name,
+      imageUrl,
+      price,
+      size: activeSize,
+      type: typeNames[activeType],
+    };
+    onClickAddPizza(obj);
   };
 
   return (
@@ -54,7 +66,7 @@ function PizzaBlock({ name, imageUrl, price, types, sizes }) {
       </div>
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">от {price} ₽</div>
-        <Button className="button--add" outline>
+        <Button onClick={onAddPizza} className="button--add" outline>
           <svg
             width="12"
             height="12"
